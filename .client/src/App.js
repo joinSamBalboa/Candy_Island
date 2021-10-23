@@ -10,6 +10,7 @@ import Footer from './components/common/Footer'
 import Home from './components/common/Home'
 import SecureRoute from './components/auth/SecureRoute'
 import Search from './components/listings/Search'
+import SingleListing from './components/listings/SingleListing'
 
 function App() {
 
@@ -31,6 +32,9 @@ function App() {
         </Route>
         <Route exact path='/search'>
           <Search />
+        </Route>
+        <Route exact path='/search/:id'>
+          <SingleListing />
         </Route>
       </Switch>
       <Footer />

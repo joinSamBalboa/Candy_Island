@@ -3,19 +3,34 @@ import axios from 'axios'
 import { useLocation, Link, useHistory } from 'react-router-dom'
 import { userIsAuthenticated, getTokenFromLocalStorage } from '../helpers/auth'
 import ReactPaginate from 'react-paginate'
+import Select from 'react-select'
 
 const Search = () => {
 
   const [listings, setListings] = useState([])
   const [filteredListings, setFilteredListings] = useState([])
   const [filters, setFilters] = useState({ searchTerm: '', categories: '', ships_to: '' })
-  const [categories, setCategories] = useState([])
   const [hasError, setHasError] = useState(false)
 
   const [currentPage, setCurrentPage] = useState(0)
   const perPage = 5
   const pageCount = Math.ceil(filteredListings.length / perPage)
   const offset = currentPage * perPage
+
+  const categories = [
+    { value: 'Sour', label: 'Sour' },
+    { value: 'Sherbet', label: 'Sherbet' },
+    { value: 'Mint', label: 'Mint' },
+    { value: 'Lollipop', label: 'Lollipop' },
+    { value: 'Liquorice', label: 'Liquorice' },
+    { value: 'Jelly', label: 'Jelly' },
+    { value: 'Marshmallow', label: 'Marshmallow' },
+    { value: 'Fizzy', label: 'Fizzy' },
+    { value: 'Chocolate', label: 'Chocolate' },
+    { value: 'Chewy', label: 'Chewy' },
+    { value: 'Bubble Gum', label: 'Bubble Gum' },
+    { value: 'Boiled', label: 'Boiled' }
+  ]
 
   useEffect(() => {
     const getData = async () => {
@@ -33,21 +48,6 @@ const Search = () => {
     getData()
   }, [])
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const { data } = await axios.get(
-          '/api/categories/',
-          { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } }
-        )
-        console.log(data)
-        setCategories(data)
-      } catch (error) {
-        setHasError(true)
-      }
-    }
-    getData()
-  }, [])
 
   const handleFilterChange = event => {
     const newObj = { ...filters, [event.target.name]: event.target.value }
@@ -64,6 +64,11 @@ const Search = () => {
   const handlePageClick = (e) => {
     const selectedPage = e.selected
     setCurrentPage(selectedPage)
+  }
+
+  const handleMultiSelected = (selected, name) => {
+    const values = selected ? selected.map(item => item.value) : []
+    setFilters({ ...filters, [name]: values })
   }
 
 
@@ -94,7 +99,7 @@ const Search = () => {
                       <div className="small text-muted">{listing.created_at}</div>
                       <h2 className="card-title h4">{listing.name}</h2>
                       <p className="card-text">{listing.description.substring(0, 200)}...</p>
-                      <a className="btn btn-primary" href="#!">View Listing</a>
+                      <Link className="btn btn-primary" to={`/search/${listing.id}`}>View Listing</Link>
                     </div>
                   </div>
                 })
@@ -119,18 +124,17 @@ const Search = () => {
               <div className="card-body">
                 <div className="mb-3">
                   <label>Category: </label>
-                  <select onChange={handleFilterChange} name="categories" value={filters.categories} className='select'>
-                    <option value="All">All</option>
-                    {categories.length > 0 &&
-                      categories.map(category => {
-                        return <option key={category.id} value={category.name}>{category.name}</option>
-                      })
-                    }
-                  </select>
+                  <Select
+                    options={categories}
+                    isMulti
+                    name="categories"
+                    className='select'
+                    onChange={(selected) => handleMultiSelected(selected, 'categories')}
+                  />
                 </div>
                 <div className="mb-3">
                   <label>Ships to: </label>
-                  <select onChange={handleFilterChange} name="ships_to" value={filters.ships_to} className='select'>
+                  <select onChange={handleFilterChange} name="ships_to" value={filters.ships_to} className="form-control">
                     <option value="Worldwide">Worldwide</option>
                     <option value="EU">EU</option>
                     <option value="US">US</option>

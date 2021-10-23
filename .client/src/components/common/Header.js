@@ -23,7 +23,6 @@ const Header = () => {
           { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } }
         )
         setProfile(data)
-        console.log(data)
       } catch (error) {
         setHasError(true)
       }

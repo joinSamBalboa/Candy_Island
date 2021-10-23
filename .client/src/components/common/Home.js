@@ -13,6 +13,8 @@ const Home = () => {
   const [hasError, setHasError] = useState(false)
   const [categories, setCategories] = useState([])
 
+  
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -92,7 +94,7 @@ const Home = () => {
                     <div className="small text-muted">{listing.created_at}</div>
                     <h2 className="card-title h4">{listing.name}</h2>
                     <p className="card-text">{listing.description.substring(0, 200)}...</p>
-                    <a className="btn btn-primary" href="#!">View Listing</a>
+                    <Link className="btn btn-primary" to={`/search/${listing.id}`}>View Listing</Link>
                   </div>
                 </div>
               })
