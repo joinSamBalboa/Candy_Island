@@ -1,0 +1,38 @@
+[
+{
+  "model": "listings.listing",
+  "pk": 2,
+  "fields": {
+    "name": "Flying Saucers",
+    "image": "https://www.keepitsweet.co.uk/imagemagic.php?img=images/Flying-Saucers-2KIN-SHE-FLS.jpg&w=373&h=279&page=",
+    "ships_to": "Worldwide",
+    "quantity": 100,
+    "description": "A firm sweet shop favourite, these fizzy sherbert-filled rice paper flying saucers are out of this world. These are possibly the greatest sweets ever, they combine the perfectly simple taste and texture of flavoured rice paper with the zangy, explosive fruit sherbet! They melt on your tongue and we don't know anybody that doesn't like these, and lets be honest what isn't to like?! So succulently flavourful, be careful not to scoff the whole lot at one time... it's a mistake everyone has made onc",
+    "price": "4.99",
+    "weight": 50,
+    "owner": 1,
+    "categories": [
+      11,
+      12,
+      5
+    ]
+  }
+},
+{
+  "model": "listings.listing",
+  "pk": 3,
+  "fields": {
+    "name": "Candy Cones",
+    "image": "https://www.keepitsweet.co.uk/imagemagic.php?img=images/Candy-Cones-1KIN-CAN-CAC.jpg&w=373&h=279&page=",
+    "ships_to": "Worldwide",
+    "quantity": 1,
+    "description": "Candy Cones are ice cream shaped candy pieces made from luxurious smooth strawberry and cream flavoured candy. Perfect for the car journey to the seaside or as a snack on the ferry, a good cure to dad's jabbering we think!",
+    "price": "9.99",
+    "weight": 100,
+    "owner": 5,
+    "categories": [
+      4
+    ]
+  }
+}
+]

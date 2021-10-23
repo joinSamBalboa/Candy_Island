@@ -1,0 +1,40 @@
+
+
+.home{
+  background-color: whitesmoke;
+  height: 60em;
+}
+.row{
+  margin: 40px;
+}
+.fw-bolder{
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  letter-spacing: .1rem;
+  font-family: 'Berkshire Swash', cursive;
+}
+.lead{
+  color: white;
+}
+.listing-card{
+  flex-direction: row;
+}
+.card-img-top{
+  height: 250px;
+  width: 250px;
+}
+.card-header {
+  background-color: $theme-border;
+  letter-spacing: .2rem;
+  color: white;
+}
+
+.btn-primary {
+  background-color: $theme-border;
+  border-color: $theme-border;
+  letter-spacing: .1rem;
+}
+
+.card{
+  border: 1px solid $theme-border;
+}

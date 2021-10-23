@@ -1,0 +1,13 @@
+.bg-light {
+  --bs-bg-opacity: 1;
+  background-color: $theme-border!Important;
+}
+
+.nav-hover:hover{
+  border:white 1px solid;
+}
+
+.nav-hover{
+  color: white;
+  letter-spacing: .2rem;
+}

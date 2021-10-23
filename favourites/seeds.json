@@ -1,0 +1,26 @@
+[
+{
+  "model": "favourites.favourite",
+  "pk": 1,
+  "fields": {
+    "owner": 1,
+    "listings": 2
+  }
+},
+{
+  "model": "favourites.favourite",
+  "pk": 2,
+  "fields": {
+    "owner": 5,
+    "listings": 2
+  }
+},
+{
+  "model": "favourites.favourite",
+  "pk": 3,
+  "fields": {
+    "owner": 5,
+    "listings": 2
+  }
+}
+]

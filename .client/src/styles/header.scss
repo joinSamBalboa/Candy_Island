@@ -1,0 +1,19 @@
+.fs-4{
+  font-family: 'Berkshire Swash', cursive;
+  font-size: calc(1.275rem + 2vw)!important;
+  align-items: start;
+  color: white;
+  text-shadow: -2px 0 #FF7701, 0 2px #00C154, 2px 0 #FF7701, 0 -2px #00C154;
+}
+.logout{
+  cursor: pointer;
+  color: white;
+}
+
+.p-header{
+  color: white;
+}
+
+.profileName{
+  color: $theme-border;
+}
