@@ -4,6 +4,7 @@ import { useParams, Link, useHistory, useLocation } from 'react-router-dom'
 import { getTokenFromLocalStorage, getPayload, userIsAuthenticated } from '../helpers/auth'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
+import ReactStars from 'react-rating-stars-component'
 
 const SingleListing = () => {
 
@@ -49,8 +50,28 @@ const SingleListing = () => {
     }
   }
 
+  const starsRating =
+  listing.feedbacks &&
+  listing.feedbacks.reduce((acc, feedback) => {
+    return parseFloat(parseFloat((acc.rating + feedback.rating)) / parseFloat(listing.feedbacks.length))
+  })
+
+  const rating = {
+    size: 20,
+    edit: false,
+    value: starsRating,
+    isHalf: true,
+    count: 5,
+  }
+  
+  useEffect(() => {
+    // Triggers rerender with path change
+  }, [location.pathname])
+
+  console.log(starsRating)
+
   return (
-    <div className="container ">
+    <div className="container card mt-1">
       <div className="row">
         <div className="col-md-6">
           <img src={listing.image} alt={listing.image} className="image-responsive" />
@@ -63,7 +84,6 @@ const SingleListing = () => {
                 {
                   listing.categories &&
                   listing.categories.map(category => {
-                    console.log('Category->', category)
                     return <span key={category.id} className="badge badge-primary">{category.name}</span>
                   })
                 }
@@ -73,13 +93,7 @@ const SingleListing = () => {
           </div>
           <div className="row">
             <div className="col-md-3">
-              <span className="">{
-                listing.feedbacks > 0 &&
-                listing.feedbacks.reduce((acc, feedback) => {
-                  console.log(Number(listing.feedbacks.length))
-                  return parseFloat(parseFloat((acc.rating + feedback.rating)) / parseFloat(listing.feedbacks.length))
-                })
-              }</span>
+              <ReactStars {...rating} />
             </div>
             <div className="col-md-3">
               <span className="monospaced">Give Feedback</span>
@@ -134,7 +148,7 @@ const SingleListing = () => {
             <TabPanel><p>{listing.description}</p></TabPanel>
             <TabPanel>
               {
-                listing.feedbacks > 0 &&
+                listing.feedbacks &&
                 listing.feedbacks.map(feedback => {
                   return <p key={feedback.id}>{feedback.text}</p>
                 })
