@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.exceptions import NotFound
-# from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Listing
 from .serializers.common import ListingSerializer
@@ -10,7 +10,7 @@ from .serializers.populated import PopulatedListingSerializer
 
 # Create your views here.
 class ListingListView(APIView):
-    # permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsAuthenticated,)
 
     def get(self, _request):
         listings = Listing.objects.all() 

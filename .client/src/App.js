@@ -11,18 +11,23 @@ import Home from './components/common/Home'
 import SecureRoute from './components/auth/SecureRoute'
 import Search from './components/listings/Search'
 import SingleListing from './components/listings/SingleListing'
+import VendorModal from './components/vendor/VendorModal'
+import SecureVendorRoute from './components/auth/VendorSecureRoute'
+import Order from './components/orders/Order'
+import Orders from './components/orders/Orders'
 
 function App() {
 
 
   return (
-  
+
     <BrowserRouter>
+      <VendorModal />
       <Header />
       <Navbar />
       <Switch>
         <Route exact path='/'>
-          <SecureRoute path='/home'/>
+          <SecureRoute path='/home' />
         </Route>
         <Route exact path='/login'>
           <Login />
@@ -35,6 +40,15 @@ function App() {
         </Route>
         <Route exact path='/search/:id'>
           <SingleListing />
+        </Route>
+        <Route exact path='/vendor'>
+          <SecureVendorRoute />
+        </Route>
+        <Route exact path='/orders/:id'>
+          <Order />
+        </Route>
+        <Route exact path='/orders'>
+          <Orders /> 
         </Route>
       </Switch>
       <Footer />

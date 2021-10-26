@@ -22,6 +22,12 @@ class OrderListView(APIView):
             return Response(order_to_create.data, status=status.HTTP_201_CREATED)
         return Response(order_to_create.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
+    def get(self, _request):
+        orders = Order.objects.all() 
+        serialized_orders = PopulatedOrderSerializer(orders, many=True)
+        return Response(serialized_orders.data, status=status.HTTP_200_OK)
+    
+
 class OrderDetailView(APIView):
     permission_classes = (IsAuthenticated, )
 
@@ -38,6 +44,15 @@ class OrderDetailView(APIView):
         serialized_order = PopulatedOrderSerializer(product)
         print(serialized_order.data)
         return Response(serialized_order.data, status=status.HTTP_200_OK)
+
+    def put(self, request, pk):
+        order_to_update = self.get_order(pk=pk) # get our product
+        updated_order = OrderSerializer(order_to_update, data=request.data)
+        if updated_order.is_valid() and order_to_update.listing.owner == request.user: # is_valid checks the validity of the newly created object
+            updated_order.save() # saves it if it's valid
+            print('Updated data', updated_order.data)
+            return Response(updated_order.data, status=status.HTTP_202_ACCEPTED)
+        return Response(updated_order.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
     
     def delete(self, request, pk):
         order_to_cancel = self.get_order(pk=pk)

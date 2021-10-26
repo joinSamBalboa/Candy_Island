@@ -2,3 +2,15 @@
   background: $theme-border!Important;
   color: white!Important;
 }
+.image-responsive{
+  // border: 1px solid $theme-border;
+  border-radius: 1%;
+}
+.badge{
+  color: $theme-border;
+}
+.btn-primary {
+  background-color: $theme-border;
+  border-color: $theme-border;
+  letter-spacing: .1rem;
+}

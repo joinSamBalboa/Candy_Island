@@ -67,21 +67,14 @@ class UserView(APIView):
         return Response(serialized_profile.data, status=status.HTTP_200_OK)
 
 
-    def delete(self, request, pk):
-        profile_to_delete = self.get_profile(pk=pk)
-        if profile_to_delete.id != request.user.id:
-            raise PermissionDenied(detail="Unauthorised")
-        profile_to_delete.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    # def delete(self, request, pk):
+    #     profile_to_delete = self.get_profile(pk=pk)
+    #     if profile_to_delete.id != request.user.id:
+    #         raise PermissionDenied(detail="Unauthorised")
+    #     profile_to_delete.delete()
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
 
-    def put(self, request, pk):
-        profile_to_update = self.get_profile(pk=pk)
-        updated_profile = UserSerializer(profile_to_update, data=request.data)
-        if updated_profile.is_valid() and profile_to_update.id != request.user.id:
-            updated_profile.save()
-            return Response(updated_profile.data, status=status.HTTP_202_ACCEPTED)
-        return Response(updated_profile.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
-
+    
 class UserListView(APIView):
 
     def get(self, _request):
@@ -105,3 +98,5 @@ class ProfileView(APIView):
         # if profile.id != request.user.id:
         #     return Response(serialized_profile.data, status=status.HTTP_200_OK)
         return Response(serialized_profile.data, status=status.HTTP_200_OK)
+
+

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useLocation, Link, useHistory } from 'react-router-dom'
-import { userIsAuthenticated, getTokenFromLocalStorage } from '../helpers/auth'
+import { Link } from 'react-router-dom'
+import { getTokenFromLocalStorage } from '../helpers/auth'
 import ReactPaginate from 'react-paginate'
 import Select from 'react-select'
 
@@ -93,7 +93,7 @@ const Search = () => {
               />
               {listings.length > 0 &&
                 (filters.categories !== '' || filters.searchTerm !== '' || filters.ships_to !== '' ? filteredListings : listings).sort((a, b) => a.name.toUpperCase() < b.name.toUpperCase() ? -1 : 1).slice(offset, offset + perPage).map(listing => {
-                  return <div key={listing.id} className="card mb-4 listing-card">
+                  return <div key={listing.id} className="card mb-4 listing-card shadow">
                     <a href="#!"><img className="card-img-top" src={listing.image} alt={listing.image} /></a>
                     <div className="card-body">
                       <div className="small text-muted">{listing.created_at}</div>
@@ -110,7 +110,7 @@ const Search = () => {
           </div>
 
           <div className="col-lg-4">
-            <div className="card mb-4">
+            <div className="card mb-4 shadow">
               <div className="card-header">Search</div>
               <div className="card-body">
                 <div className="input-group">
@@ -119,7 +119,7 @@ const Search = () => {
               </div>
             </div>
 
-            <div className="card mb-4">
+            <div className="card mb-4 shadow">
               <div className="card-header">Filter by:</div>
               <div className="card-body">
                 <div className="mb-3">

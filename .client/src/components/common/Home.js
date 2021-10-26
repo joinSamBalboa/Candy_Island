@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useLocation, Link, useHistory } from 'react-router-dom'
-import { userIsAuthenticated, getTokenFromLocalStorage } from '../helpers/auth'
+import { getTokenFromLocalStorage } from '../helpers/auth'
 
 
 const Home = () => {
@@ -75,7 +75,7 @@ const Home = () => {
 
       <div className="container">
         <div className="text-center my-5">
-          <h1 className="fw-bolder">Welcome, {profile.username}</h1>
+          <h1 className="fw-bolder ">Welcome, {profile.username}</h1>
           <p className="lead ">Feel free to browse the random listings or search for what you&apos;re looking for</p>
         </div>
       </div>
@@ -88,7 +88,7 @@ const Home = () => {
 
             {listings.length > 0 &&
               listings.sort(() => 0.5 - Math.random()).slice(0, 4).map(listing => {
-                return <div key={listing.id} className="card mb-4 listing-card">
+                return <div key={listing.id} className="card mb-4 listing-card shadow">
                   <a href="#!"><img className="card-img-top" src={listing.image} alt="..." /></a>
                   <div className="card-body">
                     <div className="small text-muted">{listing.created_at}</div>
@@ -101,7 +101,7 @@ const Home = () => {
             }
           </div>
           <div className="col-lg-4">
-            <div className="card mb-4">
+            <div className="card mb-4 shadow">
               <div className="card-header">Search</div>
               <div className="card-body">
                 <div onClick={searchClick} className="input-group">
@@ -110,7 +110,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="card mb-4">
+            <div className="card mb-4 shadow">
               <div className="card-header">Categories</div>
               <div className="card-body">
                 <div className="row">
@@ -135,7 +135,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="card mb-4">
+            <div className="card mb-4 shadow">
               <div className="card-header">User statistics</div>
               <div className="card-body">
                 {/* <p>Total Listings:{profile.listings.length}</p>

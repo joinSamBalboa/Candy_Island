@@ -1,9 +1,9 @@
 from .common import UserSerializer
-from listings.serializers.common import ListingSerializer
-from orders.serializers.common import OrderSerializer
+from listings.serializers.populated import PopulatedListingSerializer
+from orders.serializers.populated import PopulatedOrderSerializer
 from favourites.serializers.populated import PopulatedFavouriteSerializer
 
 class PopulatedUserSerializer(UserSerializer):
-    listings = ListingSerializer(many=True)
-    orders = OrderSerializer(many=True)
+    listings = PopulatedListingSerializer(many=True)
+    orders = PopulatedOrderSerializer(many=True)
     favourites = PopulatedFavouriteSerializer(many=True)
