@@ -76,7 +76,7 @@ const SingleListing = () => {
   return (
     <>
       <OrderModal listing={listing} id={listing.id} />
-      <div className="container rounded card mt-5 mb-6 shadow">
+      <div className="margin-10 rounded card mt-5 mb-6 shadow">
         <div className="row">
           <div className="col-md-6 d-flex">
             <img src={listing.image} alt={listing.image} className="image-responsive" />
@@ -163,7 +163,7 @@ const SingleListing = () => {
           </div>
         </div>
       </div>
-      <div className="container mt-5 mb-5">
+      <div className="margin-10 mt-5 mb-5">
         {listing.owner &&
           listing.orders.map(order => {
             return <div key={order.id} className="card mb-4 order-card shadow p-3">

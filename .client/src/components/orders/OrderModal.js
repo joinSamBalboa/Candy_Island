@@ -42,11 +42,11 @@ const OrderModal = ({ listing, id }) => {
         formData,
         { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } }
       )
-      
+      history.push('/orders')
     } catch (error) {
       // if (error.response.data.errors) setErrors(error.response.data.errors)
     }
-    history.push('/orders')
+    
   }
 
   const totalPrice = (listing.price * formData.quantity).toFixed(2)

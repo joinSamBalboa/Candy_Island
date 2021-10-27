@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -66,6 +65,16 @@ class UserView(APIView):
         #     return Response(serialized_profile.data, status=status.HTTP_200_OK)
         return Response(serialized_profile.data, status=status.HTTP_200_OK)
 
+    def put(self, request):
+        Updated_serialized_profile = PopulatedUserSerializer(request.user, data=request.data)
+        if Updated_serialized_profile.is_valid():
+            Updated_serialized_profile.update()
+            
+            return Response(Updated_serialized_profile.data, status=status.HTTP_202_ACCEPTED)
+        print(Updated_serialized_profile.data)
+        return Response(Updated_serialized_profile.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+
 
     # def delete(self, request, pk):
     #     profile_to_delete = self.get_profile(pk=pk)
@@ -99,4 +108,4 @@ class ProfileView(APIView):
         #     return Response(serialized_profile.data, status=status.HTTP_200_OK)
         return Response(serialized_profile.data, status=status.HTTP_200_OK)
 
-
+    

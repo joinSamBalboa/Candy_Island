@@ -16,7 +16,7 @@ const Header = () => {
 
   useEffect(() => {
     const getProfile = async () => {
-      
+
       try {
         const { data } = await axios.get(
           '/api/members/profile/',
@@ -43,7 +43,7 @@ const Header = () => {
 
   return (
     <header className="py-3 border-bottom">
-      <div className="container d-flex flex-wrap justify-content-space-between align-items-center">
+      <div className="d-flex flex-wrap justify-content-space-between align-items-center margin-10">
         <Link to='/' className="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
           <span className="fs-4">Candy</span>
           <img src={logo} alt="logo" />
@@ -51,11 +51,15 @@ const Header = () => {
         </Link>
         {
           profile && userIsAuthenticated() &&
+          <div className="d-flex align-items-center">
+            <div className="image_inner_container">
+              <Link to='/profile'><img src={profile.vendor_image} alt={profile.vendor_image} /></Link>
+            </div>
             <div>
-              <img src={profile.image} alt="" />
-              <p className="p-header">Logged in as <span className="profileName">{profile.username}</span></p>
+              <p className="p-header">Logged in as <Link to='/profile' className="profileName">{profile.username}</Link></p>
               <a onClick={handleLogout} className="nav-link link-dark px-2 logout">(<span className="profileName">Logout</span>)</a>
             </div>
+          </div>
         }
       </div>
     </header>

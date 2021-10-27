@@ -73,7 +73,7 @@ const Home = () => {
   return (
     <>
 
-      <div className="container">
+      <div className="margin-10">
         <div className="text-center my-5">
           <h1 className="fw-bolder ">Welcome, {profile.username}</h1>
           <p className="lead ">Feel free to browse the random listings or search for what you&apos;re looking for</p>
@@ -81,7 +81,7 @@ const Home = () => {
       </div>
 
 
-      <div className="ml-3 mr-3">
+      <div className="ml-3 mr-3 margin-10">
         <div className="row">
           <div className="col-lg-8">
 

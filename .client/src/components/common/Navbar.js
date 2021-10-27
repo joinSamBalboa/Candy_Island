@@ -37,12 +37,12 @@ const Navbar = () => {
     history.push('/')
   }
   return (
-    <nav className="py-2 bg-light border-bottom">
-      <div className="container d-flex flex-wrap">
+    <nav className="py-2 bg-light border-bottom d-flex justify-content-center">
+      <div className="d-flex flex-wrap">
         {
           userIsAuthenticated() ?
             <>
-              <ul className="nav me-auto">
+              <ul className="nav me-auto ">
                 <li className="nav-item"><Link to='/' className="nav-link link-dark px-2 active nav-hover">Home</Link></li>
                 <li className="nav-item"><Link to='/orders' className="nav-link link-dark px-2 nav-hover">Orders</Link></li>
                 {profile.is_vendor ?

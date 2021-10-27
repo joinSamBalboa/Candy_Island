@@ -40,7 +40,7 @@ const Orders = () => {
   }, [])
 
   return (
-    <div className="App container mt-3 mb-5">
+    <div className="App margin-10 mt-3 mb-5 p-3">
       <ReactPaginate
         previousLabel={'← Previous'}
         nextLabel={'Next →'}
