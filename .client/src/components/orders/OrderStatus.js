@@ -7,9 +7,7 @@ const OrderStatus = () => {
 
 
   const { id } = useParams()
-  const [formData, setFormData] = useState({
-    status: 'Pending',
-  })
+
   const [order, setOrder] = useState({
     listing: {
       price: 0,
@@ -21,15 +19,13 @@ const OrderStatus = () => {
   })
   const [hasError, setHasError] = useState(false)
 
-
-
   useEffect(() => {
     const getOrder = async () => {
       try {
         const { data } = await axios.get(`/api/orders/${id}`,
           { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } })
         setOrder(data)
-        console.log(data)
+        setFormData(data)
       } catch (error) {
         setHasError(true)
       }
@@ -40,13 +36,18 @@ const OrderStatus = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      await axios.put(`/api/orders/${id}`,
+      await axios.put(`/api/orders/${id}/`,
         formData,
         { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } })
     } catch (error) {
       setHasError(true)
     }
   }
+
+  const [formData, setFormData] = useState({
+    status: '',
+
+  })
 
   console.log(formData)
 
@@ -60,21 +61,24 @@ const OrderStatus = () => {
     <>
       <h2 className="font-italic mb-4">Order Status: {order.status}</h2>
 
-      <>
-        <label>Order status:</label>
-        <form>
-          <select onInput={handleChange} className="form-select" value={formData.status} name="status">
-            <option value="Pending">Pending</option>
-            {order.listing.owner &&
+
+      {order.listing.owner &&
+        <>
+          <label>Order status:</label>
+          <form onSubmit={handleSubmit}>
+            <select onInput={handleChange} className="form-select" value={formData.status} name="status">
+              <option value="Pending">Pending</option>
+
               <option value="Shipped">Shipped</option>
-            }
-            {order.owner && order.status === 'Shipped' &&
+
               <option value="Completed">Completed</option>
-            }
-          </select>
-          <button onSubmit={handleSubmit} type="submit" className="btn btn-primary btn-block mt-3">Confirm</button>
-        </form>
-      </>
+
+            </select>
+            <button className="btn btn-primary btn-block mt-3">Confirm</button>
+          </form>
+        </>
+      }
+
 
     </>
   )

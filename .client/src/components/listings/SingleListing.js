@@ -1,11 +1,12 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import { useParams, Link, useHistory, useLocation } from 'react-router-dom'
+import { useParams, Link, useHistory } from 'react-router-dom'
 import { getTokenFromLocalStorage, getPayload } from '../helpers/auth'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
 import ReactStars from 'react-rating-stars-component'
 import OrderModal from '../orders/OrderModal'
+import FeedbackModal from '../feedback/FeedbackModal'
 
 const SingleListing = () => {
 
@@ -13,27 +14,12 @@ const SingleListing = () => {
 
   const history = useHistory()
 
-  const location = useLocation()
-
-  const [listing, setListing] = useState({})
+  const [listing, setListing] = useState({
+  })
   const [hasError, setHasError] = useState(false)
 
+  const [starsRating, setStarsRating] = useState(0)
 
-  const starsRating =
-    listing.feedbacks > 0 ?
-      listing.feedbacks.reduce((acc, feedback) => {
-        return parseFloat(parseFloat((acc.rating + feedback.rating)) / parseFloat(listing.feedbacks.length))
-      })
-      :
-      0
-
-  const rating = {
-    size: 20,
-    edit: false,
-    value: starsRating,
-    isHalf: true,
-    count: 5,
-  }
 
   useEffect(() => {
     const getListing = async () => {
@@ -43,12 +29,17 @@ const SingleListing = () => {
           { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } }
         )
         setListing(data)
+        setStarsRating(
+          parseInt(data.feedbacks.reduce((acc, feedback) => {
+            return parseFloat(parseFloat((acc.rating + feedback.rating)) / parseFloat(data.feedbacks.length))
+          }))
+        )
       } catch (error) {
         setHasError(true)
       }
     }
     getListing()
-  }, [id])
+  }, [id, starsRating])
 
   const userIsOwner = (ownerId) => {
     const payload = getPayload()
@@ -69,14 +60,12 @@ const SingleListing = () => {
   }
 
 
-  useEffect(() => {
-    // Triggers rerender with path change
-  }, [location.pathname])
 
   return (
     <>
       <OrderModal listing={listing} id={listing.id} />
-      <div className="margin-10 rounded card mt-5 mb-6 shadow">
+      <FeedbackModal listing={listing} id={listing.id}/>
+      <div className="container rounded card mt-5 mb-6 shadow">
         <div className="row">
           <div className="col-md-6 d-flex">
             <img src={listing.image} alt={listing.image} className="image-responsive" />
@@ -84,15 +73,14 @@ const SingleListing = () => {
           <div className="col-md-6">
             <div className="row">
               <div className="col-md-12">
-                <h1>{listing.name}</h1>
+                <h1 className="fw-bolder-color">{listing.name}</h1>
                 <div className="col-md-12">
                   {
                     listing.categories &&
                     listing.categories.map(category => {
-                      return <span key={category.id} className="badge badge-primary">{category.name}</span>
+                      return <span key={category.id} className="badge">{category.name}</span>
                     })
                   }
-                  {/* <span className="">Sold by {listing.owner.username}</span> */}
                 </div>
 
               </div>
@@ -101,10 +89,15 @@ const SingleListing = () => {
 
             <div className="row">
               <div className="col-md-3">
-                <ReactStars {...rating} />
+                <ReactStars
+                  value={starsRating}
+                  size={20}
+                  edit={false}
+                  isHalf={true}
+                  count={5} />
               </div>
               <div className="col-md-3">
-                <span className="monospaced">Give Feedback</span>
+                <span className="monospaced" data-bs-toggle='modal' data-bs-target='#ModalFeedbackForm'>Give Feedback</span>
               </div>
             </div>
 
@@ -134,15 +127,12 @@ const SingleListing = () => {
                   }
                 </span>
               </div>
-              <div className="col-md-4 col-md-offset-1 text-center">
-                <a className="monospaced" href="#">Add to Favourites</a>
-              </div>
             </div>
             <div className="row">
               <div className="col-md-12 bottom-rule top-10"></div>
             </div>
           </div>
-          <div className="row">
+          <div className="mt-5">
             <Tabs>
               <TabList>
                 <Tab>Description</Tab>
@@ -154,7 +144,23 @@ const SingleListing = () => {
                 {
                   listing.feedbacks &&
                   listing.feedbacks.map(feedback => {
-                    return <p key={feedback.id}>{feedback.text}</p>
+                    return <div key={feedback.id}>
+                      <li className="list-unstyled">
+                        <div className="reviewHeader">
+                          <img src={feedback.owner.vendor_image} className="reviewImage" alt={feedback.owner.vendor_image} />
+                          <p><strong>By {feedback.owner.username}</strong></p>
+                        </div>
+                        <ReactStars
+                          value={feedback.rating}
+                          size={20}
+                          edit={false}
+                          isHalf={true}
+                          count={5}
+                        />
+                        <p>{feedback.text}</p>
+                      </li>
+                      <hr />
+                    </div>
                   })
                 }
               </TabPanel>
@@ -163,8 +169,8 @@ const SingleListing = () => {
           </div>
         </div>
       </div>
-      <div className="margin-10 mt-5 mb-5">
-        {listing.owner &&
+      {/* <div className="container mt-5 mb-5">
+        {listing.owner.id ===  &&
           listing.orders.map(order => {
             return <div key={order.id} className="card mb-4 order-card shadow p-3">
               <div className="card-body">
@@ -176,7 +182,7 @@ const SingleListing = () => {
               </div>
             </div>
           })}
-      </div>
+      </div> */}
     </>
   )
 

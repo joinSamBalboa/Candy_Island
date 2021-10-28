@@ -1,5 +1,7 @@
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { userIsAuthenticated } from './components/helpers/auth'
+import { getTokenFromLocalStorage } from './components/helpers/auth'
+import axios from 'axios'
 
 //* Components
 import Register from './components/auth/Register'
@@ -15,22 +17,49 @@ import VendorModal from './components/vendor/VendorModal'
 import SecureVendorRoute from './components/auth/VendorSecureRoute'
 import Order from './components/orders/Order'
 import Orders from './components/orders/Orders'
+import Profile from './components/profile/Profile'
+import SearchCategory from './components/listings/SearchCategory'
 
 function App() {
+
+
+
+  const [profile, setProfile] = useState({})
+  const [hasError, setHasError] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(true)
+
+  
+
+
+  useEffect(() => {
+    const getProfile = async () => {
+      try {
+        const { data } = await axios.get(
+          '/api/members/profile/',
+          { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } }
+        )
+        setProfile(data)
+      } catch (error) {
+        setHasError(true)
+      }
+    }
+    if (loggedIn) getProfile()
+  }, [loggedIn])
+
 
 
   return (
 
     <BrowserRouter>
       <VendorModal />
-      <Header />
-      <Navbar />
+      <Header profile={profile} hasError={hasError} setProfile={setProfile} setLoggedIn={setLoggedIn}/>
+      <Navbar profile={profile} hasError={hasError} />
       <Switch>
         <Route exact path='/'>
           <SecureRoute path='/home' />
         </Route>
         <Route exact path='/login'>
-          <Login />
+          <Login setLoggedIn={setLoggedIn} />
         </Route>
         <Route exact path='/register'>
           <Register />
@@ -41,6 +70,9 @@ function App() {
         <Route exact path='/search/:id'>
           <SingleListing />
         </Route>
+        <Route exact path='/category/:name'>
+          <SearchCategory />
+        </Route>
         <Route exact path='/vendor'>
           <SecureVendorRoute />
         </Route>
@@ -48,7 +80,10 @@ function App() {
           <Order />
         </Route>
         <Route exact path='/orders'>
-          <Orders /> 
+          <Orders />
+        </Route>
+        <Route exact path='/profile'>
+          <Profile />
         </Route>
       </Switch>
       <Footer />

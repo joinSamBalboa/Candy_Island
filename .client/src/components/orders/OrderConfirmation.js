@@ -7,8 +7,6 @@ import logo from '../../assets/ISLAND.svg'
 const OrderConfirmation = () => {
 
 
-  // const { id } = useParams()
-
   const history = useHistory()
 
   const { id } = useParams()
@@ -30,7 +28,6 @@ const OrderConfirmation = () => {
         const { data } = await axios.get(`/api/orders/${id}`,
           { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } })
         setOrder(data)
-        console.log(data)
       } catch (error) {
         setHasError(true)
       }
@@ -39,6 +36,10 @@ const OrderConfirmation = () => {
   }, [id])
 
   const totalPrice = (order.listing.price * order.quantity).toFixed(2)
+
+  const address = order.address
+  const orderAddress = address
+  console.log({ orderAddress })
 
 
   return (
@@ -86,7 +87,7 @@ const OrderConfirmation = () => {
               <hr />
               <div className="d-flex flex-column align-items-start" >
                 <p>Delivery Address</p>
-                <p>{order.address}</p>
+                <address>{order.address}</address>
               </div>
               <div>
               </div>

@@ -12,7 +12,6 @@ from .serializers.common import FavouriteSerializer
 class FavouriteListView(APIView):
 
     def post(self, request):
-        request.data['owner'] = request.user.id
         favourite_to_add = FavouriteSerializer(data=request.data)
         if favourite_to_add.is_valid():
             favourite_to_add.save()

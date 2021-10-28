@@ -3,11 +3,11 @@ import { Link, useHistory, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import 'friendly-challenge/widget'
 
-const Login = () => {
+const Login = ({ setLoggedIn }) => {
 
   const history = useHistory()
 
-  const location = useLocation()
+  useLocation()
 
   const [formData, setFormData] = useState({
     username: '',
@@ -22,9 +22,6 @@ const Login = () => {
     detail: '',
   })
 
-  useEffect(() => {
-    // Triggers rerender with path change
-  }, [location.pathname])
 
   //* Functions 
   const handleChange = (event) => {
@@ -42,6 +39,7 @@ const Login = () => {
     try {
       const { data } = await axios.post('/api/members/login/', formData)
       setTokenToLocalStorage(data.token)
+      setLoggedIn(true)
       history.push('/')
     } catch (error) {
       // if (error.request.response) setErrors(error.request.response)

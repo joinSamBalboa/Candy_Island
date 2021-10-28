@@ -4,42 +4,19 @@ import { Link, useHistory, useLocation } from 'react-router-dom'
 import { getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/auth'
 import logo from '../../assets/ISLAND.svg'
 
-const Header = () => {
 
+const Header = ({ profile, hasError, setProfile, setLoggedIn }) => {
 
   const history = useHistory()
 
-  const location = useLocation()
-
-  const [profile, setProfile] = useState({})
-  const [hasError, setHasError] = useState(false)
-
-  useEffect(() => {
-    const getProfile = async () => {
-
-      try {
-        const { data } = await axios.get(
-          '/api/members/profile/',
-          { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } }
-        )
-        setProfile(data)
-      } catch (error) {
-        setHasError(true)
-      }
-    }
-    getProfile()
-  }, [])
-
-  useEffect(() => {
-    // Triggers rerender with path change
-  }, [location.pathname])
-
+  const location = useLocation()  
 
   const handleLogout = () => {
     window.localStorage.removeItem('token')
-    history.push('/')
+    setProfile({})
+    setLoggedIn(false)
+    history.push('/login')
   }
-
 
   return (
     <header className="py-3 border-bottom">

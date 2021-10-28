@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { getTokenFromLocalStorage } from '../helpers/auth'
 import ReactPaginate from 'react-paginate'
 import Select from 'react-select'
 
 const Search = () => {
+
+  useLocation()
 
   const [listings, setListings] = useState([])
   const [filteredListings, setFilteredListings] = useState([])
@@ -91,18 +93,21 @@ const Search = () => {
                 disabledClassName={'pagination__link--disabled'}
                 activeClassName={'pagination__link--active'}
               />
-              {listings.length > 0 &&
+              {listings.length > 0 ?
                 (filters.categories !== '' || filters.searchTerm !== '' || filters.ships_to !== '' ? filteredListings : listings).sort((a, b) => a.name.toUpperCase() < b.name.toUpperCase() ? -1 : 1).slice(offset, offset + perPage).map(listing => {
                   return <div key={listing.id} className="card mb-4 listing-card shadow">
-                    <a href="#!"><img className="card-img-top" src={listing.image} alt={listing.image} /></a>
+                    <Link to={`/search/${listing.id}`}><img className="card-img-top" src={listing.image} alt="..." /></Link>
                     <div className="card-body">
-                      <div className="small text-muted">{listing.created_at}</div>
-                      <h2 className="card-title h4">{listing.name}</h2>
+                      <h2 className="card-title h4 fw-bolder-color">{listing.name}</h2>
+                      <p className="small">Sold by {listing.owner.username}</p>
                       <p className="card-text">{listing.description.substring(0, 200)}...</p>
+                      <h3>£{listing.price}</h3>
                       <Link className="btn btn-primary" to={`/search/${listing.id}`}>View Listing</Link>
                     </div>
                   </div>
                 })
+                :
+                <p className="text-white">Can&apos;t find listing</p>
               }
             </div>
 

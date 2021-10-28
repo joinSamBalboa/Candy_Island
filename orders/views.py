@@ -3,12 +3,14 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.exceptions import NotFound, PermissionDenied
 from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth import get_user_model
 
 from .models import Order
 
 from .serializers.common import OrderSerializer
 from .serializers.populated import PopulatedOrderSerializer
 
+User = get_user_model()
 # Create your views here.
 
 class OrderListView(APIView):
@@ -39,17 +41,18 @@ class OrderDetailView(APIView):
             raise NotFound(detail="Order not found")
         
 
-    def get(self, _request, pk):
+    def get(self, request, pk):
         product = self.get_order(pk=pk)
         serialized_order = PopulatedOrderSerializer(product)
-        print(serialized_order.data)
-        return Response(serialized_order.data, status=status.HTTP_200_OK)
+        if request.user.id == product.owner.id or request.user.id == product.listing.owner.id:
+            return Response(serialized_order.data, status=status.HTTP_200_OK)
+        return Response("Unauthorised", status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     def put(self, request, pk):
         order_to_update = self.get_order(pk=pk) # get our product
         updated_order = OrderSerializer(order_to_update, data=request.data)
-        if updated_order.is_valid() and order_to_update.listing.owner == request.user: # is_valid checks the validity of the newly created object
-            updated_order.save() # saves it if it's valid
+        if updated_order.is_valid(): 
+            updated_order.save() 
             print('Updated data', updated_order.data)
             return Response(updated_order.data, status=status.HTTP_202_ACCEPTED)
         return Response(updated_order.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)

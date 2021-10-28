@@ -67,7 +67,7 @@ const OrderModal = ({ listing, id }) => {
               <div className="form-group">
                 <label className="control-label">Address:</label>
                 <div>
-                  <input onInput={handleChange} type="TextArea" className="form-control input-lg address-field" name="address" value={formData.address} />
+                  <textarea onInput={handleChange} type="textarea" className="form-control" name="address" value={formData.address} />
                 </div>
               </div>
               <div className="col-md-5 product-qty">

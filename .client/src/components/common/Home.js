@@ -89,11 +89,12 @@ const Home = () => {
             {listings.length > 0 &&
               listings.sort(() => 0.5 - Math.random()).slice(0, 4).map(listing => {
                 return <div key={listing.id} className="card mb-4 listing-card shadow">
-                  <a href="#!"><img className="card-img-top" src={listing.image} alt="..." /></a>
+                  <Link to={`/search/${listing.id}`}><img className="card-img-top" src={listing.image} alt="..." /></Link>
                   <div className="card-body">
-                    <div className="small text-muted">{listing.created_at}</div>
-                    <h2 className="card-title h4">{listing.name}</h2>
+                    <h2 className="card-title h4 fw-bolder-color">{listing.name}</h2>
+                    <p className="small">Sold by {listing.owner.username}</p>
                     <p className="card-text">{listing.description.substring(0, 200)}...</p>
+                    <h3>£{listing.price}</h3>
                     <Link className="btn btn-primary" to={`/search/${listing.id}`}>View Listing</Link>
                   </div>
                 </div>
@@ -118,7 +119,7 @@ const Home = () => {
                     <ul className="list-unstyled mb-0">
                       {categories.length > 0 &&
                         categories.slice(0, 6).map(category => {
-                          return <li key={category.id}><Link to={`/search/${category.name}`}>{category.name}</Link></li>
+                          return <li key={category.id}><Link to={`/category/${category.name}`}>{category.name}</Link></li>
                         })
                       }
                     </ul>
@@ -127,19 +128,12 @@ const Home = () => {
                     <ul className="list-unstyled mb-0">
                       {categories.length > 0 &&
                         categories.slice(6, 12).map(category => {
-                          return <li key={category.id}><Link to={`/search/${category.name}`}>{category.name}</Link></li>
+                          return <li key={category.id}><Link to={`/category/${category.name}`}>{category.name}</Link></li>
                         })
                       }
                     </ul>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className="card mb-4 shadow">
-              <div className="card-header">User statistics</div>
-              <div className="card-body">
-                {/* <p>Total Listings:{profile.listings.length}</p>
-                <p>Total Orders:{profile.orders.length}</p> */}
               </div>
             </div>
           </div>

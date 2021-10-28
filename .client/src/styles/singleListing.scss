@@ -7,10 +7,17 @@
   border-radius: 1%;
 }
 .badge{
-  color: $theme-border;
+  color: #ff7701;
 }
 .btn-primary {
   background-color: $theme-border;
   border-color: $theme-border;
   letter-spacing: .1rem;
+}
+.reviewImage {
+  max-width: 50px;
+  max-height: 50px;
+}
+.reviewHeader{
+  display: flex;
 }
