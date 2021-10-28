@@ -39,7 +39,7 @@ const OrderConfirmation = () => {
 
   const address = order.address
   const orderAddress = address
-  console.log({ orderAddress })
+  // console.log({ orderAddress })
 
 
   return (

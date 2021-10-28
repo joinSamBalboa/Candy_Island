@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { getTokenFromLocalStorage } from '../helpers/auth'
 
-const FeedbackModal = ({ listing, id }) => {
+const FeedbackModal = ({ listing, id, setSubmitted }) => {
 
   const history = useHistory()
 
@@ -16,17 +16,17 @@ const FeedbackModal = ({ listing, id }) => {
     text: '',
   })
 
-
   const handleSubmitFeedback = async (event) => {
     event.preventDefault()
     try {
       await axios.post(
-        'api/feedbacks/',
+        '/api/feedbacks/',
         formData,
         { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } }
       )
+      setSubmitted(true)
+      setFormData({ text: '', rating: 0 })
       history.push(`/search/${id}`)
-      setFormData({})
     } catch (error) {
       // if (error.response.data.errors) setErrors(error.response.data.errors)
     }
@@ -35,8 +35,8 @@ const FeedbackModal = ({ listing, id }) => {
 
   const handleChange = (event) => {
     const target = event.target
-    const value = target.value
-    setFormData({ ...formData, [target.name]: value, order: id })
+    const value = target.type === 'number' ? target.value : target.value
+    setFormData({ ...formData, [target.name]: value, listings: id })
     setErrors({ ...errors, [target.name]: '' })
   }
 
@@ -59,7 +59,7 @@ const FeedbackModal = ({ listing, id }) => {
               </div>
               <div className="col-md-5 product-qty">
                 <label className="control-label">Rating:</label>
-                <input onInput={handleChange} type="number" name="rating" className="form-control" value={formData.rating} />
+                <input onInput={handleChange} type="number" name="rating" className="form-control" max='5' min='0' value={formData.rating} />
               </div>
               <div className="form-group">
                 <div>
@@ -67,7 +67,7 @@ const FeedbackModal = ({ listing, id }) => {
               </div>
               <div className="form-group">
                 <div>
-                  <button type="submit" className="btn btn-lg btn-primary btn-block">Submit!</button>
+                  <button type="submit" className="btn btn-lg btn-primary btn-block">Submit Feedback!</button>
                 </div>
               </div>
             </form>

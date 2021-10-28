@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { getTokenFromLocalStorage } from '../helpers/auth'
 
-const OrderModal = ({ listing, id }) => {
+const OrderModal = ({ listing, id, setSubmitted }) => {
 
   const history = useHistory()
 
@@ -42,6 +42,7 @@ const OrderModal = ({ listing, id }) => {
         formData,
         { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } }
       )
+      setSubmitted(true)
       history.push('/orders')
     } catch (error) {
       // if (error.response.data.errors) setErrors(error.response.data.errors)

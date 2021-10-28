@@ -3,6 +3,7 @@ import React from 'react'
 
 import AddListing from '../listings/AddListing'
 import UserListing from '../listings/UserListings'
+import VendorOrders from './VendorOrders'
 
 
 
@@ -21,6 +22,8 @@ const Vendor = () => {
           <a className="btn btn-lg btn-primary btn-block shadow mb-3" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
             <span className="font-weight-bold small text-uppercase">Current Listings</span></a>
 
+          <a className="btn btn-lg btn-primary btn-block shadow mb-3" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+            <span className="font-weight-bold small text-uppercase">Orders</span></a>
         </div>
       </div>
 
@@ -33,6 +36,9 @@ const Vendor = () => {
           </div>
           <div className="tab-pane App" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
             <UserListing />
+          </div>
+          <div className="tab-pane" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+            <VendorOrders />
           </div>
         </div>
       </div>

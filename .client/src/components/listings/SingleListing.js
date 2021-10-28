@@ -20,6 +20,7 @@ const SingleListing = () => {
 
   const [starsRating, setStarsRating] = useState(0)
 
+  const [submitted, setSubmitted] = useState(false)
 
   useEffect(() => {
     const getListing = async () => {
@@ -29,17 +30,16 @@ const SingleListing = () => {
           { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } }
         )
         setListing(data)
-        setStarsRating(
-          parseInt(data.feedbacks.reduce((acc, feedback) => {
-            return parseFloat(parseFloat((acc.rating + feedback.rating)) / parseFloat(data.feedbacks.length))
-          }))
-        )
+        setSubmitted(false)
+        // setStarsRating(listing.feedbacks.reduce((acc, feedback) => {
+        //   return (acc + feedback.rating) / listing.feedbacks.length
+        // }, 0))
       } catch (error) {
         setHasError(true)
       }
     }
     getListing()
-  }, [id, starsRating])
+  }, [id, submitted])
 
   const userIsOwner = (ownerId) => {
     const payload = getPayload()
@@ -47,24 +47,15 @@ const SingleListing = () => {
     return ownerId === payload.sub
   }
 
-  const handleDeleteListing = async () => {
-    try {
-      await axios.delete(
-        `/api/listings/${id}`,
-        { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } }
-      )
-      history.push('/home')
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  
+  
 
 
 
   return (
     <>
-      <OrderModal listing={listing} id={listing.id} />
-      <FeedbackModal listing={listing} id={listing.id}/>
+      <OrderModal listing={listing} id={listing.id} setSubmitted={setSubmitted}/>
+      <FeedbackModal listing={listing} id={listing.id} setSubmitted={setSubmitted}/>
       <div className="container rounded card mt-5 mb-6 shadow">
         <div className="row">
           <div className="col-md-6 d-flex">

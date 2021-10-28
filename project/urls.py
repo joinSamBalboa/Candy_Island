@@ -22,7 +22,7 @@ urlpatterns = [
     path('api/listings/', include('listings.urls')),
     path('api/categories/', include('categories.urls')),
     path('api/orders/', include('orders.urls')),
-    path('/api/feedbacks/', include('feedbacks.urls')),
+    path('api/feedbacks/', include('feedbacks.urls')),
     path('api/conversations/', include('conversations.urls')),
     path('api/favourites/', include('favourites.urls'))
 

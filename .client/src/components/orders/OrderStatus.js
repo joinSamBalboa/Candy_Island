@@ -9,6 +9,7 @@ const OrderStatus = () => {
   const { id } = useParams()
 
   const [order, setOrder] = useState({
+    status: '',
     listing: {
       price: 0,
       owner: {
@@ -19,37 +20,38 @@ const OrderStatus = () => {
   })
   const [hasError, setHasError] = useState(false)
 
+  const [updated, setUpdated] = useState(false)
+
   useEffect(() => {
     const getOrder = async () => {
       try {
         const { data } = await axios.get(`/api/orders/${id}`,
           { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } })
         setOrder(data)
-        setFormData(data)
+        setUpdated(false)
       } catch (error) {
         setHasError(true)
       }
     }
     getOrder()
-  }, [id])
+  }, [id, updated])
+
+  const [formData, setFormData] = useState({
+    status: order.status,
+  })
+
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    setUpdated(true)
     try {
       await axios.put(`/api/orders/${id}/`,
-        formData,
+        { ...formData, address: order.address, listing: order.listing.id, owner: order.owner },
         { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } })
     } catch (error) {
       setHasError(true)
     }
   }
-
-  const [formData, setFormData] = useState({
-    status: '',
-
-  })
-
-  console.log(formData)
 
   const handleChange = event => {
     const target = event.target
