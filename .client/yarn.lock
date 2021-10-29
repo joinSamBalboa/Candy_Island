@@ -9313,6 +9313,11 @@ react-select@^5.1.0:
     prop-types "^15.6.0"
     react-transition-group "^4.3.0"
 
+react-simple-star-rating@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-simple-star-rating/-/react-simple-star-rating-3.0.0.tgz#923607b33ceb55e3c2c84fd79a6e0db64477638a"
+  integrity sha512-kxl9ucQTr1TzXGT/klBe7EMqCN9uuRoSlZqKCr9HMMriEY8rB/VwABtwELYhSClhkE0LIRpWw12EAG9hq5DOSg==
+
 react-tabs@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/react-tabs/-/react-tabs-3.2.2.tgz#07bdc3cdb17bdffedd02627f32a93cd4b3d6e4d0"

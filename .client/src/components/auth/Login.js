@@ -7,23 +7,18 @@ const Login = ({ setLoggedIn }) => {
 
   const history = useHistory()
 
-  useLocation()
+  const location = useLocation()
 
   const [formData, setFormData] = useState({
     username: '',
     password: '',
     login_time: 1,
-    // listings: [],
-    // orders: [],
-    // favourites: [],
+  
   })
 
-  const [errors, setErrors] = useState({
-    detail: '',
-  })
+  const [errors, setErrors] = useState(false)
 
 
-  //* Functions 
   const handleChange = (event) => {
     const newObj = event.target.name === 'login_time' ? { ...formData, [event.target.name]: parseInt(event.target.value) } : { ...formData, [event.target.name]: event.target.value }
     setFormData(newObj)
@@ -42,16 +37,12 @@ const Login = ({ setLoggedIn }) => {
       setLoggedIn(true)
       history.push('/')
     } catch (error) {
-      // if (error.request.response) setErrors(error.request.response)
-      console.log(errors)
+      if (error.request && error.request.response) setErrors(true)
+    
     }
   }
 
-  const one = 1
-  const three = 3
-  const six = 6
-  const twelve = 12
-  const day = 24
+  console.log(errors)
 
   return (
     <div className="text-center">  
@@ -63,15 +54,15 @@ const Login = ({ setLoggedIn }) => {
         </div>
         <div className="form-group">
           <input onInput={handleChange} name="password" type="password" className="form-control" placeholder="Enter password"/>
-          {/* {errors && <small className="form-text text-muted">Invalid username/password combination</small>} */}
+          {errors === true && <small className="form-text text-white">Invalid username/password combination</small>}
         </div>
         <div className="form-group">
           <select onInput={handleChange} id="inputState" name="login_time" className="form-control">
-            <option selected value={one}>Stay logged in for 1 hour</option>
-            <option value={three}>Stay logged in for 3 hours</option>
-            <option value={six}>Stay logged in for 6 hours</option>
-            <option value={twelve}>Stay logged in for 12 hours</option>
-            <option value={day}>Stay logged in for 1 day</option>
+            <option value={1}>Stay logged in for 1 hour</option>
+            <option value={3}>Stay logged in for 3 hours</option>
+            <option value={6}>Stay logged in for 6 hours</option>
+            <option value={12}>Stay logged in for 12 hours</option>
+            <option value={24}>Stay logged in for 1 day</option>
           </select>
         </div>
         {/* <div className="frc-captcha" data-sitekey="FCMMQDAM2AES5RRQ"></div> */}

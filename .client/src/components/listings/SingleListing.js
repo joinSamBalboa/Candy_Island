@@ -18,7 +18,6 @@ const SingleListing = () => {
   })
   const [hasError, setHasError] = useState(false)
 
-  const [starsRating, setStarsRating] = useState(0)
 
   const [submitted, setSubmitted] = useState(false)
 
@@ -31,9 +30,6 @@ const SingleListing = () => {
         )
         setListing(data)
         setSubmitted(false)
-        // setStarsRating(listing.feedbacks.reduce((acc, feedback) => {
-        //   return (acc + feedback.rating) / listing.feedbacks.length
-        // }, 0))
       } catch (error) {
         setHasError(true)
       }
@@ -41,21 +37,28 @@ const SingleListing = () => {
     getListing()
   }, [id, submitted])
 
+
+
+
+
   const userIsOwner = (ownerId) => {
     const payload = getPayload()
     if (!payload) return
     return ownerId === payload.sub
   }
 
-  
-  
+  const [starsRating, setStarsRating] = useState(listing.feedbacks && listing.feedbacks.reduce((acc, feedback) => {
+    return (acc + feedback.rating) / listing.feedbacks.length
+  }, 0))
+
+  console.log(starsRating)
 
 
 
   return (
     <>
-      <OrderModal listing={listing} id={listing.id} setSubmitted={setSubmitted}/>
-      <FeedbackModal listing={listing} id={listing.id} setSubmitted={setSubmitted}/>
+      <OrderModal listing={listing} id={listing.id} setSubmitted={setSubmitted} />
+      <FeedbackModal listing={listing} id={listing.id} setSubmitted={setSubmitted} />
       <div className="container rounded card mt-5 mb-6 shadow">
         <div className="row">
           <div className="col-md-6 d-flex">
@@ -81,7 +84,7 @@ const SingleListing = () => {
             <div className="row">
               <div className="col-md-3">
                 <ReactStars
-                  value={starsRating}
+                  value = {starsRating}
                   size={20}
                   edit={false}
                   isHalf={true}

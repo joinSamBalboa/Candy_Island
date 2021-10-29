@@ -6,7 +6,11 @@ import ImageUpload from '../helpers/ImageUpload'
 
 const ProfileDetails = () => {
 
-  const [formData, setFormData] = useState({})
+  const [formData, setFormData] = useState({
+    username: '',
+    is_vendor: false,
+    btc_address: '',
+  })
 
   const [errors, setErrors] = useState({})
 

@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { getTokenFromLocalStorage } from '../helpers/auth'
+import { Rating } from 'react-simple-star-rating'
 
 const FeedbackModal = ({ listing, id, setSubmitted }) => {
 
@@ -15,6 +16,11 @@ const FeedbackModal = ({ listing, id, setSubmitted }) => {
   const [errors, setErrors] = useState({
     text: '',
   })
+
+  const handleRating = (rating) => {
+    setFormData({ ...formData, rating })
+
+  }
 
   const handleSubmitFeedback = async (event) => {
     event.preventDefault()
@@ -59,7 +65,7 @@ const FeedbackModal = ({ listing, id, setSubmitted }) => {
               </div>
               <div className="col-md-5 product-qty">
                 <label className="control-label">Rating:</label>
-                <input onInput={handleChange} type="number" name="rating" className="form-control" max='5' min='0' value={formData.rating} />
+                <Rating onClick={handleRating} emptyColor="grey" fillColor="yellow" ratingValue={formData.rating} />
               </div>
               <div className="form-group">
                 <div>
