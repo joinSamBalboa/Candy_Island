@@ -60,7 +60,7 @@ const Register = () => {
           <input onInput={handleChange} name="password_confirmation" type="password" className="form-control" placeholder="Confirm Password" />
           {errors.request && <small className="form-text text-white">Confirm password</small>}
         </div>
-        {/* <div className="frc-captcha" data-sitekey="FCMMQDAM2AES5RRQ"></div> */}
+        <div className="frc-captcha" data-sitekey="FCMMQDAM2AES5RRQ"></div>
         <button type="submit" className="btn btn-lg btn-primary btn-block mt-3">Register</button>
       </form>
     </div>

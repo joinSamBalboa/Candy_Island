@@ -14,8 +14,7 @@ const SingleListing = () => {
 
   const history = useHistory()
 
-  const [listing, setListing] = useState({
-  })
+  const [listing, setListing] = useState({})
   const [hasError, setHasError] = useState(false)
 
 

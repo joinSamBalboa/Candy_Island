@@ -65,7 +65,7 @@ const Login = ({ setLoggedIn }) => {
             <option value={24}>Stay logged in for 1 day</option>
           </select>
         </div>
-        {/* <div className="frc-captcha" data-sitekey="FCMMQDAM2AES5RRQ"></div> */}
+        <div className="frc-captcha" data-sitekey="FCMMQDAM2AES5RRQ"></div>
         <button type="submit" className="btn btn-lg btn-primary btn-block mt-3">Login</button>
       </form>
     </div>
