@@ -57,12 +57,8 @@ class UserView(APIView):
             raise NotFound(detail="Profile not found")
     
     def get(self, request):
-        # profile = self.get_profile(pk=pk)
         serialized_profile = PopulatedUserSerializer(request.user)
         print(serialized_profile.data)
-        # populated_serialized_profile = PopulatedUserSerializer(profile)
-        # if profile.id != request.user.id:
-        #     return Response(serialized_profile.data, status=status.HTTP_200_OK)
         return Response(serialized_profile.data, status=status.HTTP_200_OK)
 
     def put(self, request):

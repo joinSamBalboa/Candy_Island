@@ -1,0 +1,41 @@
+header{
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  background: linear-gradient(-45deg, #7575FF, #A8A8FF, #7575FF, #A8A8FF);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+.fs-4{
+  font-family: "Berkshire Swash", cursive;
+    font-size: calc(1rem + 1vw) !important;
+    align-items: start;
+    color: mediumpurple;
+    text-shadow: -2px 0 white, 0 2px #ff7701, 2px 0 #ff7701, 0 -2px #ff7701;
+}
+.logout{
+  cursor: pointer;
+  color: white;
+}
+
+.p-header{
+  color: white;
+}
+
+.profileName{
+  color: $theme-border;
+}
+
+.image_inner_container{
+  border-radius: 50%;
+  padding: 5px;
+  img{
+    height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      border: 5px solid white;
+  }
+}
+
+.margin-10{
+  margin: 0 10vw;
+}

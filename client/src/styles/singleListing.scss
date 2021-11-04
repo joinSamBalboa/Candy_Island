@@ -1,0 +1,26 @@
+.react-tabs__tab--selected{
+  background: $theme-border!Important;
+  color: white!Important;
+}
+.image-responsive{
+  // border: 1px solid $theme-border;
+  border-radius: 1%;
+}
+.badge{
+  color: #ff7701;
+}
+.btn-primary {
+  background-color: $theme-border;
+  border-color: $theme-border;
+  letter-spacing: .1rem;
+}
+.reviewImage {
+  max-width: 50px;
+  max-height: 50px;
+}
+.reviewHeader{
+  display: flex;
+}
+.monospaced{
+  cursor:pointer;
+}
