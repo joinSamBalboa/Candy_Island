@@ -4,10 +4,10 @@
   "pk": 2,
   "fields": {
     "name": "Flying Saucers",
-    "image": "https://www.keepitsweet.co.uk/imagemagic.php?img=images/Flying-Saucers-2KIN-SHE-FLS.jpg&w=373&h=279&page=",
+    "image": "https://www.keepitsweet.co.uk/imagemagic.php?img=images/Flying-Saucers-1KIN-SHE-FLS.jpg&w=373&h=279&page=",
     "ships_to": "Worldwide",
     "quantity": 100,
-    "description": "A firm sweet shop favourite, these fizzy sherbert-filled rice paper flying saucers are out of this world. These are possibly the greatest sweets ever, they combine the perfectly simple taste and texture of flavoured rice paper with the zangy, explosive fruit sherbet! They melt on your tongue and we don't know anybody that doesn't like these, and lets be honest what isn't to like?! So succulently flavourful, be careful not to scoff the whole lot at one time... it's a mistake everyone has made onc",
+    "description": "A firm sweet shop favourite, these fizzy sherbert-filled rice paper flying saucers are out of this world. These are possibly the greatest sweets ever, they combine the perfectly simple taste and texture of flavoured rice paper with the zangy, explosive fruit sherbet! They melt on your tongue and we don't know anybody that doesn't like these, and lets be honest what isn't to like?! So succulently flavourful, be careful not to scoff the whole lot at one time... it's a mistake everyone has made",
     "price": "4.99",
     "weight": 50,
     "owner": 1,
@@ -32,6 +32,231 @@
     "owner": 5,
     "categories": [
       4
+    ]
+  }
+},
+{
+  "model": "listings.listing",
+  "pk": 4,
+  "fields": {
+    "name": "Bon bons Lemon",
+    "image": "https://www.keepitsweet.co.uk/imagemagic.php?img=images/Lemon-Bon-BonsBRI-CHE-BBL.jpg&w=373&h=279&page=",
+    "ships_to": "Worldwide",
+    "quantity": 200,
+    "description": "Tangy lemon flavoured bonbons are full of the zesty essence and are so deliciously tempting you won't be able to say no!",
+    "price": "9.99",
+    "weight": 500,
+    "owner": 9,
+    "categories": [
+      11,
+      12
+    ]
+  }
+},
+{
+  "model": "listings.listing",
+  "pk": 5,
+  "fields": {
+    "name": "Bananas",
+    "image": "https://www.keepitsweet.co.uk/imagemagic.php?img=images/Candy-Bananas-1BAR-FOA-BAN.jpg&w=373&h=279&page=",
+    "ships_to": "Worldwide",
+    "quantity": 100,
+    "description": "Go bananas over this original treat from sweet maker Barratt. Also known as Foam Bananas or Sweet Bananas, we think these taste a bit like banana milkshake. These are a true favourite and never disappoint with their traditional foam texture and banana-ee taste! They are soft and juicy with a yellow mellow middle, why not have a munch on these banana babies and see what you think?",
+    "price": "29.99",
+    "weight": 1000,
+    "owner": 1,
+    "categories": [
+      3,
+      6
+    ]
+  }
+},
+{
+  "model": "listings.listing",
+  "pk": 6,
+  "fields": {
+    "name": "Fruit Salads",
+    "image": "https://www.keepitsweet.co.uk/imagemagic.php?img=images/Fruit-Salads-B1BAR-CHE-FRS.jpg&w=373&h=279&page=",
+    "ships_to": "Worldwide",
+    "quantity": 100,
+    "description": "Unfortunately these won’t count to your five a day, despite the name (sad face). There’s no fruit and no salad in these classic chews, just lots of mouth watering pineapple and raspberry flavour. The fabulously fruity taste is just waiting to burst through but first these fruity treats need you to unwrap the iconic yellow covering that holds the yumminess in and then shove it in your mouth!",
+    "price": "200.00",
+    "weight": 500,
+    "owner": 1,
+    "categories": [
+      3
+    ]
+  }
+},
+{
+  "model": "listings.listing",
+  "pk": 7,
+  "fields": {
+    "name": "Chocolate Orange",
+    "image": "https://assets.sainsburys-groceries.co.uk/gol/2012032/1/300x300.jpg",
+    "ships_to": "UK",
+    "quantity": 10,
+    "description": "The Terry's Chocolate Orange comprises an orange-shaped ball of chocolate mixed with orange oil, divided into 20 segments, similar to a real orange, and wrapped in orange-skin patterned foil.",
+    "price": "5.00",
+    "weight": 157,
+    "owner": 9,
+    "categories": [
+      4
+    ]
+  }
+},
+{
+  "model": "listings.listing",
+  "pk": 8,
+  "fields": {
+    "name": "Cadbury Puds",
+    "image": "https://assets.sainsburys-groceries.co.uk/gol/8076523/1/300x300.jpg",
+    "ships_to": "EU",
+    "quantity": 99,
+    "description": "The puds comprise a truffle centre with hazelnut and rice crisp pieces covered in Cadbury chocolate",
+    "price": "15.00",
+    "weight": 35,
+    "owner": 1,
+    "categories": [
+      4
+    ]
+  }
+},
+{
+  "model": "listings.listing",
+  "pk": 9,
+  "fields": {
+    "name": "Jelly Babies",
+    "image": "https://assets.sainsburys-groceries.co.uk/gol/3509661/1/300x300.jpg",
+    "ships_to": "UK",
+    "quantity": 50,
+    "description": "Jelly Babies are a type of soft sugar jelly sweets in the shape of plump babies, sold in a variety of colours. They were first manufactured in Lancashire, England, in the nineteenth century.",
+    "price": "4.99",
+    "weight": 400,
+    "owner": 5,
+    "categories": [
+      3,
+      7
+    ]
+  }
+},
+{
+  "model": "listings.listing",
+  "pk": 10,
+  "fields": {
+    "name": "Wine Gums",
+    "image": "https://assets.sainsburys-groceries.co.uk/gol/3509654/1/300x300.jpg",
+    "ships_to": "South America",
+    "quantity": 4,
+    "description": "Wine gums (or winegums) are chewy, firm pastille-type sweets similar to gumdrops without the sugar coating, originating from the United Kingdom",
+    "price": "9.99",
+    "weight": 400,
+    "owner": 5,
+    "categories": [
+      3
+    ]
+  }
+},
+{
+  "model": "listings.listing",
+  "pk": 11,
+  "fields": {
+    "name": "Jelly Tots Giant Tube",
+    "image": "https://assets.sainsburys-groceries.co.uk/gol/3496978/1/300x300.jpg",
+    "ships_to": "Asia",
+    "quantity": 1,
+    "description": "Made with real fruit juice and no artificial colourants these Rowntrees Jelly Tots are a tasty treat for all. A perfect addition to any stocking this Christmas, packaged in the classic Christmas tube design.",
+    "price": "99.99",
+    "weight": 130,
+    "owner": 9,
+    "categories": [
+      3,
+      7
+    ]
+  }
+},
+{
+  "model": "listings.listing",
+  "pk": 12,
+  "fields": {
+    "name": "Toffifee",
+    "image": "https://assets.sainsburys-groceries.co.uk/gol/7999816/1/300x300.jpg",
+    "ships_to": "Australia",
+    "quantity": 12,
+    "description": "Toffifee is a German brand of caramel candies, owned by the Berlin-based German company August Storck KG. Toffifee are caramel cups containing nougat, caramel and a hazelnut, topped with a chocolate button.",
+    "price": "8.95",
+    "weight": 100,
+    "owner": 5,
+    "categories": [
+      4
+    ]
+  }
+},
+{
+  "model": "listings.listing",
+  "pk": 13,
+  "fields": {
+    "name": "HARIBO Share the Happy Tub",
+    "image": "https://assets.sainsburys-groceries.co.uk/gol/7650211/1/300x300.jpg",
+    "ships_to": "Worldwide",
+    "quantity": 50,
+    "description": "HARIBO has a treat for everyone! Through our exciting range of gums and jellies, liquorice treats and fruit chews we tantalise taste buds and deliver delicious moments of childlike happiness with our iconic sweets.",
+    "price": "299.99",
+    "weight": 600,
+    "owner": 5,
+    "categories": [
+      3
+    ]
+  }
+},
+{
+  "model": "listings.listing",
+  "pk": 14,
+  "fields": {
+    "name": "Cherries",
+    "image": "http://res.cloudinary.com/dqqidr9eg/image/upload/v1635177237/image_upload_test/wgdtvmqddwxztleivq8l.jpg",
+    "ships_to": "Worldwide",
+    "quantity": 100,
+    "description": "Fruity cherry flavoured jelly gum. These cherries won't last long in your house as they taste so good that the whole family will race to the sweety jar to grab these! So hurry up and chomp these down before everybody else does. Go on have a bite of the cherry",
+    "price": "13.99",
+    "weight": 500,
+    "owner": 1,
+    "categories": [
+      3
+    ]
+  }
+},
+{
+  "model": "listings.listing",
+  "pk": 15,
+  "fields": {
+    "name": "Fizz Wiz Cherry - Popping Candy",
+    "image": "http://res.cloudinary.com/dqqidr9eg/image/upload/v1635177820/image_upload_test/hdazabffzi08z3qyqiqg.jpg",
+    "ships_to": "UK",
+    "quantity": 100,
+    "description": "The original popping candy from those pocket money days... Ahh blissful childhood. Also known as Space Dust, a packet of cherry flavoured Fizz Wiz promises loads of explosive fun right in your mouth! This crowd pleaser would be perfect as a stocking filler, or party bag filler, or perhaps sneak this into mum's roast and watch the guests face light up as the turkey sends out fireworks in there mouth! Or you could just blow your own socks off by wolfing-down the lot yourself!",
+    "price": "14.99",
+    "weight": 50,
+    "owner": 1,
+    "categories": [
+      12
+    ]
+  }
+},
+{
+  "model": "listings.listing",
+  "pk": 16,
+  "fields": {
+    "name": "Fizzers",
+    "image": "http://res.cloudinary.com/dqqidr9eg/image/upload/v1635177914/image_upload_test/nhvtkrsu9gyvha2xlufa.jpg",
+    "ships_to": "EU",
+    "quantity": 100,
+    "description": "A well loved classic made by Swizzels Matlow, these tiny rolls of sherbert pastel-coloured pills are perfect party bag fillers. These old-school pleasers are just what all your guest will be pining over! Perfect as a treat for the kids after swimming practise or how about a treat for dad for finally doing the washing-up? Fantastically flavourful!",
+    "price": "11.99",
+    "weight": 100,
+    "owner": 1,
+    "categories": [
+      5
     ]
   }
 }

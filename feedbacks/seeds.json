@@ -31,5 +31,148 @@
     "listings": 2,
     "owner": 5
   }
+},
+{
+  "model": "feedbacks.feedback",
+  "pk": 4,
+  "fields": {
+    "text": "Amazing",
+    "rating": 4,
+    "created_at": "2021-10-28T16:19:09.469Z",
+    "listings": 2,
+    "owner": 1
+  }
+},
+{
+  "model": "feedbacks.feedback",
+  "pk": 5,
+  "fields": {
+    "text": "was okay",
+    "rating": 3,
+    "created_at": "2021-10-28T16:19:55.072Z",
+    "listings": 2,
+    "owner": 1
+  }
+},
+{
+  "model": "feedbacks.feedback",
+  "pk": 6,
+  "fields": {
+    "text": "very nice",
+    "rating": 5,
+    "created_at": "2021-10-28T16:21:43.594Z",
+    "listings": 2,
+    "owner": 1
+  }
+},
+{
+  "model": "feedbacks.feedback",
+  "pk": 7,
+  "fields": {
+    "text": "gg",
+    "rating": 1,
+    "created_at": "2021-10-28T16:24:54.580Z",
+    "listings": 2,
+    "owner": 1
+  }
+},
+{
+  "model": "feedbacks.feedback",
+  "pk": 8,
+  "fields": {
+    "text": "ok",
+    "rating": 1,
+    "created_at": "2021-10-28T16:27:53.703Z",
+    "listings": 2,
+    "owner": 1
+  }
+},
+{
+  "model": "feedbacks.feedback",
+  "pk": 9,
+  "fields": {
+    "text": "Nice!!!",
+    "rating": 5,
+    "created_at": "2021-10-28T16:41:29.277Z",
+    "listings": 3,
+    "owner": 1
+  }
+},
+{
+  "model": "feedbacks.feedback",
+  "pk": 10,
+  "fields": {
+    "text": "yeah",
+    "rating": 2,
+    "created_at": "2021-10-28T16:42:34.543Z",
+    "listings": 3,
+    "owner": 1
+  }
+},
+{
+  "model": "feedbacks.feedback",
+  "pk": 11,
+  "fields": {
+    "text": "Really pops!",
+    "rating": 4,
+    "created_at": "2021-10-29T09:12:16.908Z",
+    "listings": 15,
+    "owner": 1
+  }
+},
+{
+  "model": "feedbacks.feedback",
+  "pk": 12,
+  "fields": {
+    "text": "qui qui",
+    "rating": 3,
+    "created_at": "2021-10-29T09:13:41.507Z",
+    "listings": 4,
+    "owner": 5
+  }
+},
+{
+  "model": "feedbacks.feedback",
+  "pk": 13,
+  "fields": {
+    "text": "Great",
+    "rating": 5,
+    "created_at": "2021-10-29T11:00:49.852Z",
+    "listings": 12,
+    "owner": 1
+  }
+},
+{
+  "model": "feedbacks.feedback",
+  "pk": 14,
+  "fields": {
+    "text": "v. good",
+    "rating": 5,
+    "created_at": "2021-10-29T13:23:51.749Z",
+    "listings": 10,
+    "owner": 1
+  }
+},
+{
+  "model": "feedbacks.feedback",
+  "pk": 15,
+  "fields": {
+    "text": "Real fizzy!",
+    "rating": 4,
+    "created_at": "2021-11-04T14:29:23.462Z",
+    "listings": 16,
+    "owner": 1
+  }
+},
+{
+  "model": "feedbacks.feedback",
+  "pk": 16,
+  "fields": {
+    "text": "Orangey!",
+    "rating": 5,
+    "created_at": "2021-11-04T15:18:47.000Z",
+    "listings": 7,
+    "owner": 1
+  }
 }
 ]
