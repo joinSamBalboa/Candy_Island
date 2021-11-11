@@ -17,7 +17,7 @@
 <p>Candy Island is an anonymous consumer-to-consumer e-commerce website, selling sweets/candy that incorporates crypto currency as it’s method of payment. Built with an extensive back end using Django with all required relationships for future development and features. Front end was built using React, users can browse listings, order items, and leave reviews as buyers. As vendors, users can add new listings for sale and manage orders and it’s status.
 </p>
 
-## ✨ [Demo]()
+## ✨ [Demo Candy Island](https://candy-island.herokuapp.com/)
 
 <div align="center">
 <img alt="opening screen" src="./client/src/assets/Kapture 2021-11-04 at 14.44.39.gif" />
