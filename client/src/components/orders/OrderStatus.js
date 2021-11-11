@@ -25,7 +25,7 @@ const OrderStatus = () => {
   useEffect(() => {
     const getOrder = async () => {
       try {
-        const { data } = await axios.get(`/api/orders/${id}`,
+        const { data } = await axios.get(`/api/orders/${id}/`,
           { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } })
         setOrder(data)
         setUpdated(false)

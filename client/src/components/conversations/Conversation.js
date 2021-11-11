@@ -25,7 +25,7 @@ const Conversation = () => {
   useEffect(() => {
     const getMessages = async () => {
       try {
-        const { data } = await axios.get(`/api/orders/${id}`,
+        const { data } = await axios.get(`/api/orders/${id}/`,
           { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } })
         setMessages(data.conversations)
         setSubmitted(false)

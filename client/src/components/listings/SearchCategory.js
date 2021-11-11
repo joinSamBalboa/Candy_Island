@@ -24,7 +24,7 @@ const SearchCategory = () => {
     const getData = async () => {
       try {
         const { data } = await axios.get(
-          `/api/categories/${name}`,
+          `/api/categories/${name}/`,
           { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } }
         )
         console.log(data.listings)

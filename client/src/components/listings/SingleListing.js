@@ -24,7 +24,7 @@ const SingleListing = () => {
     const getListing = async () => {
       try {
         const { data } = await axios.get(
-          `/api/listings/${id}`,
+          `/api/listings/${id}/`,
           { headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` } }
         )
         setListing(data)
