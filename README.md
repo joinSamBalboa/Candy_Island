@@ -3,9 +3,9 @@
 <img alt="logo" src="./client/src/assets/Screenshot 2021-11-04 at 11.35.05.png" />
 </div>
 
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
-</p>
+## Overview
+This was the fourth and final project on the Software Engineering Immersive course at General Assembly. It was a solo project.
+
 
 ## Timeframe
 <p>9 Days</p>
@@ -17,7 +17,7 @@
 <p>Candy Island is an anonymous consumer-to-consumer e-commerce website, selling sweets/candy that incorporates crypto currency as it’s method of payment. Built with an extensive back end using Django with all required relationships for future development and features. Front end was built using React, users can browse listings, order items, and leave reviews as buyers. As vendors, users can add new listings for sale and manage orders and it’s status.
 </p>
 
-## ✨ [Demo Candy Island](https://candy-island.herokuapp.com/)
+## ✨ [Demo]()
 
 <div align="center">
 <img alt="opening screen" src="./client/src/assets/Kapture 2021-11-04 at 14.44.39.gif" />
@@ -27,7 +27,7 @@
 <li>HTML5</li>
 <li>CSS3</li>
 <li>SASS</li>
-<li>Javascript ES6</li>
+<li>JavaScript ES6</li>
 <li>React</li>
 <li>Django</li>
 <li>Python</li>
@@ -35,7 +35,7 @@
 <li>Cloudinary</li>
 <li>Insomnia</li>
 <li>Git</li>
-<li>Github</li>
+<li>GitHub</li>
 <li>Chrome dev tools</li>
 
 
@@ -76,7 +76,7 @@ class Listing(models.Model):
 </div>
 
 <h4>Day 2</h4>
-<li>One feature I deinitely wanted to add was the time that the user is logged in for, I did this by creating a variable that would change the timedelta in the authentication</li>
+<li>One feature I definitely wanted to add was the time that the user is logged in for, I did this by creating a variable that would change the timedelta in the authentication</li>
 <li>Finished building the backend, adding the last profile route which would allow request of the users detail with the need of their pk.</li>
 
 ```
@@ -104,11 +104,11 @@ class UserView(APIView):
         return Response(Updated_serialized_profile.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 ```
 
-<li>Started working on the front-end, planning out the componenets that would be required.</li>
-<li>Due to the scope of what I had planned including the features, I decided to employ botstrap framework to work with to ensure the project had basic styling</li>
+<li>Started working on the front-end, planning out the components that would be required.</li>
+<li>Due to the scope of what I had planned including the features, I decided to employ Bootstrap framework to work with to ensure the project had basic styling</li>
 <li>I started with building the auth components, including Login, Register, SecureRoute for which would check if user was authenticated routing them to either the log in or home page.</li>
 <li>Also built some common components including the Header, Navbar, and Footer to give the app some life and be able to interactive with it.</li>
-<li>I seeded some information to work with  and to visualise properly how it would look</li>
+<li>I seeded some information to work with and to visualise properly how it would look</li>
 
 
 
@@ -160,7 +160,7 @@ export default SecureRoute
 <h4>Day 4/5 - Weekend</h4>
 <li>Worked on the single listing page, where the user could view listing details, buy, or leave feedback</li>
 <li>Used this time to add necessary styling</li>
-<li>Utlised react-tabs package to show description, feedback, and weight</li>
+<li>Utilized react-tabs package to show description, feedback, and weight</li>
 <li>Added react-starts to show average rating received for listings</li>
 
 <div align="center">
@@ -169,7 +169,7 @@ export default SecureRoute
 
 <h4>Day 6</h4>
 <li>Added an order modal to take care of ordering function and not take them away from the listing page</li>
-<li>created  vendor modal also on the hoemscreen which would be prompted if a user clicked the become a vendor link in the navbar</li>
+<li>created vendor modal also on the homescreen which would be prompted if a user clicked the become a vendor link in the navbar</li>
 <li>Created a vendor page with tabs, including an add a listing tab, current orders received</li>
 
 <h4>Day 7</h4>
@@ -180,7 +180,7 @@ export default SecureRoute
 </div>
 
 <h4>Day 8</h4>
-<li>Created profile page to allow user change their details if required</li>
+<li>Created profile page to allow users to change their details if required</li>
 <li>Using tabs, we're showing pending, shipped, and completed orders</li>
 
 <div align="center">
@@ -195,7 +195,7 @@ export default SecureRoute
 <img alt="opening screen" src="./client/src/assets/category.gif" />
 </div>
 
-## Difficulties
+## Challenges
 <li>Getting the list of vendors orders to show on the vendor page, through trial and error I eventually managed to get it to work</li>
 
 ```
@@ -224,14 +224,23 @@ export default SecureRoute
 
 <li>General scope of the project, it was hard to keep on adding features and work on it bit by bit</li>
 <li>Error handling was difficult compared to group projects where it would have been quicker</li>
-<li>The endurance to keep it going by the end of the project, making necessary tweak to improve the ux</li>
-<li>Profile being able to edit their profiles via become a vendor link and profile page wasn't able to be done due to the way in which django worked, but still researching this</li>
+<li>The endurance to keep it going by the end of the project, making necessary tweaks to improve the ux</li>
+<li>Profile being able to edit their profiles via become a vendor link and profile page wasn't able to be done due to the way in which Django worked, but still researching this</li>
 
 ## Wins
 <li>Completing a full-stack project solo with the features planned through</li>
 <li>Getting the list of vendors orders to show on the vendor page</li>
-<li>Getting the messaging app to work in realtime, allow buyers and vendors to communicate via the order</li>
+<li>Getting the messaging app to work in real time, allow buyers and vendors to communicate via the order</li>
 <li>Adding the order component to actually have the app be able to work in practice without the need of a payment gateway</li>
+
+## Key Learnings
+<li>Planning from beginning to end. Thinking of the long term and including apps in the back-end that I could potentially use to add features which were not added</li>
+<li>I learnt a lot about databases and relationships in this project which helped a lot when working on the front-end and understanding why things worked the way they did</li>
+<li>Thought too big initially but learnt to scale this back. I’ve definitely learnt to take deadline into consideration and knowing what I can complete in that time, and then what I could potentially add as a feature post deadline</li>
+
+## Bugs
+<li>When an order is made and user is taken to the order page, the modal background remains with no way of closing</li>
+<li>Sometimes the information in the header is prone to disappearing</li>
 
 ## Author
 
